@@ -175,10 +175,10 @@ helps you understand how square brackets work in Ruby. blush
 # p a.shift # => 1
 # p a # => [2, 3, 4]
 
-a = %w(one two three four five)
-p a.pop(2) # => ["four", "five"]
+# a = %w(one two three four five)
+# p a.pop(2) # => ["four", "five"]
 # p a # => ["one", "two", "three"]
-p a.shift(1) # => ["one", "two"]
+# p a.shift(1) # => ["one", "two"]
 # p a # => ["three"]
 
 # 9.2.3
@@ -203,3 +203,55 @@ p a.shift(1) # => ["one", "two"]
 # p a.object_id # => 60
 # b = a
 # p b.object_id # => 60
+
+# 9.2.4
+
+# array = [1, 2, [3, 4, [5], [6, [7, 8]]]]
+# p array.flatten
+# p array.flatten(1)
+# p array.flatten(2)
+# p array.flatten(22)
+
+# iterate over each element
+# if not an array:
+#     push to new array
+# if an array:
+#     iterate over elements in that array:
+#     push each to new array
+
+# p [1, 2, 3, 4].reverse
+
+# p ["abc", "def", 123].join(", ")
+
+# p a = %w(one two three)
+# p(a * "-")
+
+# p [1, 2, 3, 1, 4, 3, 5, 1].uniq
+
+# zip_codes = ["06511", "08902", "08902", nil, "10027",
+#              "08902", nil, "06511"]
+# p zip_codes.compact
+
+# p [1, 2, 3, 1, 4, 3, 5, 1].size
+# p [1, 2, 3, 1, 4, 3, 5, 1].empty?
+# p [1, 2, 3, 1, 4, 3, 5, 1].include?(7)
+# p [1, 2, 3, 1, 4, 3, 5, 1].count(1)
+
+# p [1, 2, 3, 1, 4, 3, 5, 1].slice(0, 3)
+# p [1, 2, 3, 1, 4, 3, 5, 1].take(100)
+# p [1, 2, 3, 1, 4, 3, 5, 1].first(100)
+
+# p [1, 2, 3, 1, 4, 3, 5, 1].last(3)
+# p [1, 2, 3, 1, 4, 3, 5, 1].shuffle(2)
+
+# array_1 = (1..5000).to_a
+#
+# time_1 = Time.now
+# 500.times { array_1.shuffle.first }
+# p time_2 = (Time.now - time_1) * 1000
+#
+# time_3 = Time.now
+# 500.times { array_1.sample }
+# p time_4 = (Time.now - time_3) * 1000
+
+# 9.3
