@@ -255,3 +255,110 @@ helps you understand how square brackets work in Ruby. blush
 # p time_4 = (Time.now - time_3) * 1000
 
 # 9.3
+
+# state_hash = { "Connecticut" => "CT",
+#                "Delaware" => "DE",
+#                "New Jersey" => "NJ",
+#                "Virginia" => "VA" }
+# print "Enter the name of a state: "
+# state = gets.chomp
+# abbr = state_hash[state]
+# puts "The abbreviation is #{abbr}."
+
+# state_hash = { "Connecticut" => "CT",
+#                "Delaware" => "DE",
+#                "New Jersey" => "NJ",
+#                "Virginia" => "VA" }
+# state_hash.each { |(state, abb)| puts "#{state}: #{abb}" }
+
+
+# h = {}
+# p h
+# h = Hash.new(5)
+# puts h[:a]
+# pp h.methods.sort
+# p h.itself
+
+# default_value = "Default"
+# my_hash = Hash.new(default_value)
+#
+# # Later, you can access the default value using the `default_value` variable.
+# puts default_value
+
+# arr = [1, 2]
+# arr_2 = [1, 2]
+# p arr.object_id
+# p arr_2.object_id
+# hash = { arr => "arr_1", arr_2 => "arr_2" }
+# p hash
+
+# hash = Hash.new
+# hash[arr] = "arr_1"
+# hash[arr_2] = "arr_2"
+# p hash
+
+# h = Hash["Connecticut", "CT", "Delaware", "DE"]
+# p h
+
+# h = [[1,2], [3,4], [5,6]].to_hash
+
+# require "csv"
+# source = "Name,Value\nfoo,0\nbar,1\nbaz,2\n"
+# table = CSV.parse(source, headers: true)
+# table.each {|row| p row.to_hash }
+
+# h = Hash[[1, 2].to_hash]
+# p h
+
+# p h = Hash()
+# p h = Hash(nil)
+# p h = Hash([1, 2])
+# single argument example?
+
+state_hash = { "Connecticut" => "CT",
+               "Delaware" => "DE",
+               "New Jersey" => "NJ",
+               "Virginia" => "VA" }
+# state_hash.each { |(state, abb)| puts "#{state}: #{abb}" }
+
+# state_hash["New York"] = "NY"
+# state_hash["New York"] = "New York"
+# pp state_hash
+# state_hash.store([1, 2], "NY")
+# p state_hash
+
+# h = Hash.new
+# h["a"] = 1
+# h["a"] = 2
+# puts h["a"]
+
+# p conn_abbrev = state_hash["Connecticut"]
+# p state_hash["what"]
+# p conn_abbrev = state_hash.fetch("what")
+
+# error_message = "Unknown state"
+# p state_hash.fetch("Nebraska", error_message)
+
+# state_hash = { "New Jersey" => "NJ",
+#                "Connecticut" => "CT",
+#                "Delaware" => "DE" }
+# p two_states = state_hash.values_at("New Jersey", "Delaware")
+
+# p state_hash.fetch_values("New Jersey", "Delaware")
+
+# p (state_hash.fetch_values("New Jersey", "WYOMING") do |key|
+#   "#{key} not found"
+# end)
+
+# p h = { foo: { bar: "baz" } }
+
+# contacts = { john: {
+#                phone: "555-1234",
+#                email: "john@example.com"
+#              },
+#              eric: {
+#                phone: "555-1235",
+#                email: "eric@example.com"
+#              } }
+#
+# p contacts.dig(:eric, :email)
