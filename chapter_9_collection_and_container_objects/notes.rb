@@ -315,10 +315,11 @@ helps you understand how square brackets work in Ruby. blush
 # p h = Hash([1, 2])
 # single argument example?
 
-state_hash = { "Connecticut" => "CT",
-               "Delaware" => "DE",
-               "New Jersey" => "NJ",
-               "Virginia" => "VA" }
+# state_hash = { "Connecticut" => "CT",
+#                "Delaware" => "DE",
+#                "New Jersey" => "NJ",
+#                "Virginia" => "VA" }
+
 # state_hash.each { |(state, abb)| puts "#{state}: #{abb}" }
 
 # state_hash["New York"] = "NY"
@@ -362,3 +363,75 @@ state_hash = { "Connecticut" => "CT",
 #              } }
 #
 # p contacts.dig(:eric, :email)
+
+# 9.3.3
+
+# h = Hash.new
+# p h # => {}
+# p h["no such key!"] # => nil
+#
+# h = Hash.new(0)
+# p h # => {}
+# p h["no such key!"] # => 0
+#
+# p h # => {}
+
+# h = Hash.new {|hash,key| hash[key] = 0 }
+# h["new key!"]
+# p h
+
+# 9.3.4
+
+# h1 = { first: "Joe",
+#        last: "Leo",
+#        suffix: "III" }
+# h2 = { suffix: "Jr." }
+# h1.update(h2)
+# puts h1[:suffix] # => "Jr."
+
+# h1 = { first: "Joe",
+#        last: "Leo",
+#        suffix: "III" }
+# h2 = { suffix: "Jr." }
+# h3 = h1.merge(h2)
+# p h1[:suffix] # => "III"
+# p h3 # => {:first=>"Joe",:last=>"Leo",:suffix=>"Jr."}
+
+# 9.3.5
+
+# h = Hash[1,2,3,4,5,6]
+# p h # => {1=>2, 3=>4, 5=>6}
+# p h.select {|k,v| k > 1 } # => {3=>4, 5=>6}
+
+# p h.reject {|k,v| k > 1 } # => {1=>2}
+
+# h = { street: "127th Street", apt: nil, borough: "Manhattan" }.compact
+# p h
+
+# h = { 1 => "one", 2 => "two" }
+# p h.invert # => {"two"=>2, "one"=>1}
+
+# h = { 1 => "one", 2 => "more than 1", 3 => "more than 1" }
+# p h.invert # => {"one"=>1, "more than 1"=>3}
+
+# h = {1 => "one", 2 => "two" }.clear
+# p h # => {}
+
+# h = { 1 => "one", 2 => "two" }.replace({ 10 => "ten", 20 => "twenty"})
+# p h # => {10 => "ten", 20 => "twenty"}
+
+# add_to_city_database("New York City",
+#                      state: "New York",
+#                      population: 7000000,
+#                      nickname: "Big Apple")
+#
+# def add_to_city_database(name, info)
+#   c = City.new
+#   c.name = name
+#   c.state = info[:state]
+#   c.population = info[:population]
+# # etc.
+# end
+
+# my_method { NY: "New York" }, 100, "another argument"
+# my_method({ NY: "New York" }, 100, "another argument")
