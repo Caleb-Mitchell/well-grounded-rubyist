@@ -435,3 +435,51 @@ helps you understand how square brackets work in Ruby. blush
 
 # my_method { NY: "New York" }, 100, "another argument"
 # my_method({ NY: "New York" }, 100, "another argument")
+
+# def m(a:, b:)
+#   p a,b
+# end
+
+# p m(a: 1, b: 2)
+# => 1
+# => 2
+# => [1, 2]
+
+# m #=> ArgumentError: missing keywords: a, b
+# m(a: 1) # => ArgumentError: missing keyword: b
+
+# def m(a: 1, b: 2)
+#   p a,b
+# end
+
+# p m
+# => 1
+# => 2
+# => [1, 2]
+
+# m(a:10)
+# => 10
+# => 2
+# => [10, 2]
+
+# def m(a: 1, b: 2, **c)
+#   p a,b,c
+# end
+
+# m(x: 1, y: 2)
+# => 1
+# => 2
+# => {:x=>1, :y=>2}
+# => [1, 2, {:x=>1, :y=>2}
+
+# def m(x, y, *z, a: 1, b:, **c, &block)
+#   p x,y,z,a,b,c
+# end
+
+# m(1,2,3,4,5,b:10,p:20,q:30)
+# => 1
+# => 2
+# => [3, 4, 5]
+# => 1
+# => 10
+# => {:p=>20, :q=>30}
