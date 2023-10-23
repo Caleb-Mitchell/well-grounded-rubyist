@@ -369,14 +369,21 @@ helps you understand how square brackets work in Ruby. blush
 # h = Hash.new
 # p h # => {}
 # p h["no such key!"] # => nil
-#
+
 # h = Hash.new(0)
 # p h # => {}
 # p h["no such key!"] # => 0
-#
+
+# h = Hash.new(0)
+# p h
+# p h.default
+# p h["no such key!"] # => 0
+
+
 # p h # => {}
 
 # h = Hash.new {|hash,key| hash[key] = 0 }
+# p h
 # h["new key!"]
 # p h
 
@@ -401,7 +408,8 @@ helps you understand how square brackets work in Ruby. blush
 
 # h = Hash[1,2,3,4,5,6]
 # p h # => {1=>2, 3=>4, 5=>6}
-# p h.select {|k,v| k > 1 } # => {3=>4, 5=>6}
+# p h.keep_if {|k,v| k > 1 } # => {3=>4, 5=>6}
+# p h
 
 # p h.reject {|k,v| k > 1 } # => {1=>2}
 
@@ -417,13 +425,15 @@ helps you understand how square brackets work in Ruby. blush
 # h = {1 => "one", 2 => "two" }.clear
 # p h # => {}
 
-# h = { 1 => "one", 2 => "two" }.replace({ 10 => "ten", 20 => "twenty"})
+# h = { 1 => "one", 2 => "two", 3 => "three" }.replace({ 10 => "ten", 20 => "twenty"})
+# p "hello".replace("hi")
 # p h # => {10 => "ten", 20 => "twenty"}
 
 # add_to_city_database("New York City",
 #                      state: "New York",
 #                      population: 7000000,
 #                      nickname: "Big Apple")
+# add_to_city_database("New York City", "New York", 7000000, "Big Apple")
 #
 # def add_to_city_database(name, info)
 #   c = City.new
@@ -457,7 +467,7 @@ helps you understand how square brackets work in Ruby. blush
 # => 2
 # => [1, 2]
 
-# m(a:10)
+# m(b:10)
 # => 10
 # => 2
 # => [10, 2]
@@ -465,7 +475,7 @@ helps you understand how square brackets work in Ruby. blush
 # def m(a: 1, b: 2, **c)
 #   p a,b,c
 # end
-
+#
 # m(x: 1, y: 2)
 # => 1
 # => 2
