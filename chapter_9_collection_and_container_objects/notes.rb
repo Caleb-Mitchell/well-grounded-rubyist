@@ -493,3 +493,38 @@ helps you understand how square brackets work in Ruby. blush
 # => 1
 # => 10
 # => {:p=>20, :q=>30}
+
+# 9.4.1
+
+# r = Range.new(1, 100)
+# => 1..100
+
+# r = 1..100
+# => 1..100
+
+# Range.new(1, 100, true)
+# => 1...100
+
+# r = 1..10
+# r.begin # => 1
+# r.end # => 10
+
+# r.exclude_end? # => false
+
+# r = "a".."z" # => "a".."z"
+# r.cover?("a") # => true
+# r.cover?("abc") # => true
+# r.cover?("A") # => false
+
+# r.include?("a") # => true
+# r.include?("abc") # => false
+
+# r = 1.0..2.0 # => 1.0..2.0
+# r.include?(1.5) # => true
+
+# r = 100...1 # => 100...1
+# r.include?(50) # => false
+
+# "This is a sample string"[10..-5] # => "sample st"
+# ['a','b','c','d'][0..-2] # => ["a", "b", "c"]
+# ['a','b','c','d'][0...-2] # => ["a", "b"]
